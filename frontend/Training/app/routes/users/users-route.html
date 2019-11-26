@@ -1,0 +1,26 @@
+<div class="container">
+    <h2 class="md-display-2"><i class="fa fa-users" aria-hidden="true"></i> Users</h2>
+    <user-list></user-list>
+</div>
+<nav class="toolbar-bottom">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span layout="row" flex="none">
+                <input type="text" ng-model-options="{debounce: 200}" class="text-center form-control" placeholder="Search" ng-model="filterOptions.filterGeneral" style="max-width:180px;" ng-change="refresh()">
+                <button type="button" class="btn btn-default" ng-click="filterOptions.filterGeneral = '';refresh();" style="padding: 4px 8px;"><span class="glyphicon glyphicon-remove"></span>
+            </button>
+            </span>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+</nav>
+<md-button class="md-fab md-primary" aria-label="New User" ng-click="create($event);" style="position: fixed;
+    bottom: 30px;right: 10px;width: 70px;height: 70px;font-size: 50px;padding: 0;">
+    <md-tooltip md-direction="left">Add User</md-tooltip>
+    <md-icon style="margin: 0;font-size: 50px;top: -12px;position: relative;left: 10px;">person_add</md-icon>
+</md-button>
+<modal title="User" modal-id="modal-user" ok-label="Save" max-width="500">
+    <modal-body>
+        <user-form></user-form>
+    </modal-body>
+</modal>

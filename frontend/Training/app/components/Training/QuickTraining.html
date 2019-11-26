@@ -1,0 +1,60 @@
+<div layout="column">
+    <!-- <pre> {{baseEntity | json}} </pre> -->
+    <div layout="row" flex>
+        <md-input-container flex>
+            <label>Employee</label>
+            <input type="text" ng-disabled="true" ng-model="baseEntity.TrainingScores[0].Employee.Name">
+        </md-input-container>
+        <md-input-container flex>
+            <input type="text" ng-disabled="true" ng-model="baseEntity.TrainingScores[0].Employee.LastName">
+        </md-input-container>
+        <md-input-container flex>
+            <input type="text" ng-disabled="true" ng-model="baseEntity.TrainingScores[0].Employee.MotherLastName">
+        </md-input-container>
+    </div>
+    <md-input-container>
+        <label>Clock Number</label>
+        <input type="text" ng-disabled="true" ng-model="baseEntity.TrainingScores[0].Employee.ClockNumber">
+    </md-input-container>
+    <md-input-container>
+        <label>Certification</label>
+        <input type="text" ng-disabled="true" ng-model="baseEntity.CatCertification.Value">
+    </md-input-container>
+    <md-input-container>
+        <label>Date Certification</label>
+        <input type="datetime-local" ng-model="baseEntity.ConvertedDateCertification" ng-change="onDateCertificationChanges()">
+    </md-input-container>
+    <md-input-container>
+        <label>Date Certification Expires</label>
+        <input type="datetime-local" ng-model="baseEntity.ConvertedDateExpiresAt">
+    </md-input-container>
+    <md-input-container>
+        <label>Score</label>
+        <input type="text" ng-model="baseEntity.TrainingScores[0].Score">
+    </md-input-container>
+    <div layout>
+        <md-input-container flex>
+            <label>Start Training </label>
+            <md-datepicker ng-model="baseEntity.ConvertedDateStart"></md-datepicker>
+        </md-input-container>
+        <md-input-container>
+            <label>Date End</label>
+            <md-datepicker type="datetime-local" ng-model="baseEntity.ConvertedDateEnd"></md-datepicker>
+        </md-input-container>
+    </div>
+    <md-input-container>
+        <label>Duration in hours</label>
+        <input type="text" ng-model="baseEntity.DurationInHours">
+    </md-input-container>
+    <md-input-container>
+        <label>Trainer</label>
+        <input type="text" ng-model="baseEntity.Trainer">
+    </md-input-container>
+    <md-input-container>
+        <label>Internal or External Trainer</label>
+        <md-select ng-model="baseEntity.InternalExternal" required>
+            <!--md-on-close: expression; multiple:boolean; placeholder: string;-->
+            <md-option ng-value="opt" ng-repeat="opt in ['Internal','External']">{{ opt }}</md-option>
+        </md-select>
+    </md-input-container>
+</div>

@@ -1,0 +1,257 @@
+{
+  "projectName": "Training",
+  "description": "",
+  "backend": {
+    "appName": "Training",
+    "dbName": ""
+  },
+  "frontends": [
+    {
+      "appName": "Training",
+      "routes": [
+        "employees",
+        "areas",
+        "workstations",
+        "certifications",
+        "shifts",
+        "training-profile",
+        "job-positions",
+        "matrix",
+        "trainings",
+        "dc-3"
+      ],
+      "components": [
+        "employee",
+        "workstation",
+        "certification",
+        "shift",
+        "training-profile",
+        "job-position",
+        "training",
+        "matrix",
+        "training-score",
+        "employee-card",
+        "level",
+        "format-dc-3",
+        "dc-3"
+      ]
+    }
+  ],
+  "roles": [],
+  "documents": [
+    {
+      "name": "Employee",
+      "fields": {
+        "Name": "string",
+        "Last Name": "string",
+        "Mother Last Name": "string",
+        "Clock Number": "string",
+        "Time Id Number": "string",
+        "Personal Number": "string",
+        "Hire Date": "datetime?",
+        "Position": "string",
+        "CURP": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Training"
+        ],
+        "manyToMany": [],
+        "manyToOne": [
+          "Level1",
+          "Level2",
+          "Level3",
+          "Level4",
+          "Level5",
+          "Shift",
+          "JobPosition",
+          "Supervisor"
+        ]
+      }
+    },
+    {
+      "name": "Training",
+      "fields": {
+        "Date Programmed": "datetime?",
+        "Date Start": "datetime?",
+        "Date End": "datetime?",
+        "Date Certification": "datetime?",
+        "Date Expires At": "datetime?",
+        "Trainer": "string",
+        "InternalExternal": "string",
+        "Notes": "textarea",
+        "Duration In Hours": "string",
+        "Quick Training": "bool"
+      },
+      "relationships": {
+        "oneToParent": [
+          "Certification"
+        ],
+        "oneToMany": [],
+        "manyToMany": [],
+        "manyToOne": [
+          "Level1",
+          "Supervisor"
+        ]
+      }
+    },
+    {
+      "name": "TrainingScore",
+      "fields": {
+        "Score": "int",
+        "Notes": "textarea"
+      },
+      "relationships": {
+        "oneToParent": [
+          "Training",
+          "Employee"
+        ],
+        "oneToMany": [],
+        "manyToMany": [],
+        "manyToOne": [
+          "Level1",
+          "Level2",
+          "Level3",
+          "Level4",
+          "Level5",
+          "Supervisor"
+        ]
+      }
+    },
+    {
+      "name": "FormatoDC3",
+      "fields": {
+        "Specific Occupation": "string",
+        "Course Thematic Area": "string"
+      },
+      "relationships": {
+        "oneToParent": [
+          "TrainingScore"
+        ],
+        "oneToMany": [],
+        "manyToMany": [],
+        "manyToOne": [
+          "Employee",
+          "Certification"
+        ]
+      }
+    }
+  ],
+  "entities": [
+    {
+      "name": "Shift",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "Certification",
+      "fields": {
+        "Value": "string",
+        "Lifecycle in Months": "int",
+        "Applies To DC3": "boolean"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Level1"
+        ],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "JobPosition",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "Level1",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Certification",
+          "Level2"
+        ],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "Level2",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Level1",
+          "Level3"
+        ],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "Level3",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Level2",
+          "Level4"
+        ],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "Level4",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Level3",
+          "Level5"
+        ],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    },
+    {
+      "name": "Level5",
+      "fields": {
+        "Value": "string"
+      },
+      "relationships": {
+        "oneToParent": [],
+        "oneToMany": [
+          "Level4"
+        ],
+        "manyToMany": [],
+        "manyToOne": []
+      }
+    }
+  ]
+}

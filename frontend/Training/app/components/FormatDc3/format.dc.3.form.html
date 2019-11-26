@@ -1,0 +1,212 @@
+<div class="container-fluid DC-3-printableZone DC3Form">
+    <!-- <pre>{{baseEntity | json}}</pre> -->
+    <div class="table-responsive">
+        <div flex></div>
+        <img src="images/LogoMolex.png" height="60px" alt="Molex"> {{TrainingScore.Employee.Level1.Value}} - {{TrainingScore.Employee.Shift.Value}} - {{TrainingScore.Employee.PersonalNumber}}
+      <!--   <pre>{{baseEntity | json}}</pre> -->
+        <h4 style="text-align: center; margin-bottom: 2px;"><b>FORMATO DC-3</b></h4>
+        <h4 style="text-align: center; margin-top: 2px;"><b>CONSTANCIA DE COMPETENCIAS O DE HABILIDADES LABORALES</b></h4>
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="2">DATOS DEL TRABAJADOR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <h5 style="margin-top: 5px;">Nombre (Anotar apellido paterno, apellido materno y nombre (s))</h5>
+                        <p>{{TrainingScore.Employee.LastName}} {{TrainingScore.Employee.MotherLastName}} {{TrainingScore.Employee.Name}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 style="margin-top: 5px;">Clave Única de Registro de Población</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" style="border: none;"></span>
+                            <span class="LetterField" flex ng-repeat="letter in TrainingScore.Employee.CURP track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 style="margin-top: 5px;">Ocupación específica (Catálogo Nacional de Ocupaciones) 1/</h5>
+                        <div layout style="margin-top: 8px; margin-bottom: 5px; margin-left: 7px;">
+                            <span style="border: none;"></span>
+                            <span>{{TrainingScore.Employee.STPSPosition}}</span>
+                        </div>
+                        </md-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h5 style="margin-top: 5px;">Puesto*</h5>
+                        <p>{{baseEntity.Employee.JobPosition.Value}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="2">DATOS DE LA EMPRESA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <h5 style="margin-top: 5px;">Nombre o razón social (En caso de persona física, anotar apellido paterno, apellido materno y nombre(s))</h5>
+                        <p>WOODHEAD DE MEXICO SA DE CV</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 style="margin-top: 5px;">Registro Federal de Contribuyentes con homoclave (SHCP)</h5>
+                        <div layout layout-align="space-around end" style="width: 40%;">
+                            <span class="LetterField" flex ng-repeat="letter in 'WME -800225-6L8' track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="9">DATOS DEL PROGRAMA DE CAPACITACION, ADIESTRAMIENTO Y PRODUCTIVIDAD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="9">
+                        <h5 style="margin-top: 5px;">Nombre del curso</h5>
+                        <p>{{baseEntity.Certification.Value}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 150px;">
+                        <h5>Duración en horas</h5>
+                        <p style="text-align: center;">{{TrainingScore.Training.DurationInHours}}</p>
+                    </td>
+                    <td style="width: 150px;">
+                        <h5>Periodo de ejecución:</h5>
+                        <p style="text-align: right;">De:</p>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">Año</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" flex ng-repeat="letter in FromYear track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">Mes</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" flex ng-repeat="letter in FromMonth track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">Dia</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" flex ng-repeat="letter in FromDay track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">a</h5>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">Año</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" flex ng-repeat="letter in ToYear track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">Mes</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" flex ng-repeat="letter in ToMonth track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5 style="text-align: center;">Dia</h5>
+                        <div layout layout-align="space-around end">
+                            <span class="LetterField" flex ng-repeat="letter in ToDay track by $index">
+                             {{letter}}
+                           </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9">
+                        <h5>Área temática del curso 2/</h5>
+                       <p>{{baseEntity.Certification.ThematicArea}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9">
+                        <h5 style="margin-top: 5px;">Nombre del agente capacitador o STPS 3/</h5>
+                        <p>WOODHEAD DE MEXICO</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="DC3Signatures">
+            <tbody>
+                <tr>
+                    <td colspan="3"><b>Los datos se asientan en esta constancia bajo protesta de decir verdad, apercibidos de la responsabilidad en que incurra todo aquel que no se conduce con verdad.</b></td>
+                </tr>
+                <tr>
+                    <td>Instructor o tutor</td>
+                    <td>Patron o representante legal</td>
+                    <td>Representante de los trabajadores</td>
+                </tr>
+                <tr>
+                    <td><img src="images/Isabel.png" height="60px" alt="Molex" ng-if="TrainingScore.Training.Trainer == 'Isabel Santoyo'"></td>
+                    <td><img src="images/Roberto.png" height="60px" alt="Molex"></td>
+                    <td><img src="images/MaribelOlivas.png" height="60px" alt="Molex"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="Trainer" style="margin-bottom: 0px;" >{{TrainingScore.Training.Trainer}}</p>
+                    </td>
+                    <td>Roberto Escobedo</td>
+                    <td>Maribel Olivas</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="border-top: solid 1px black;width: 150px;margin:auto; "></div>
+                        <p style="margin-top: 2px;" class="Signature">Nombre y firma</p>
+                    </td>
+                    <td>
+                        <div style="border-top: solid 1px black;width: 150px;margin:auto; "></div>
+                        <p style="margin-top: 2px;" class="Signature">Nombre y firma</p>
+                    </td>
+                    <td>
+                        <div style="border-top: solid 1px black;width: 150px;margin:auto; "></div>
+                        <p style="margin-top: 2px;" class="Signature">Nombre y firma</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h5><b>INSTRUCCIONES</b></h5>
+        <p style="font-size: 10px; margin-bottom: 2px; ">- Llenar a maquina o con letra de molde.</p>
+        <p style="font-size: 10px; margin-bottom: 2px; ">- Debera entregarse al trabajador dentro de los veinte dias habiles siguientes al termino del curso de capacitacion aprobado</p>
+        <p style="font-size: 10px; margin-bottom: 2px; ">1/ Las áreas y subáreas ocupacionales del Catálogo Nacional de Ocupaciones se encuentran disponibles en el reverso de este formato y en la página www.stps.gob.mx </p>
+        <p style="font-size: 10px; margin-bottom: 2px; ">2/ Las áreas temáticas de los cursos se encuentran disponibles en el reverso de este formato y en la página www.stps.gob.mx </p>
+        <p style="font-size: 10px; margin-bottom: 2px; ">3/ Cursos impartidos por el área competente de la Secretaria del Trabajo y Previsión Social.</p>
+        <p style="font-size: 10px; margin-bottom: 2px; ">4/ Para empresas con menos de 51 trabajadores. Para empresas con más de 50 trabajadores firmaría el representante del patrón ante la Comisión mixta de capacitación, adiestramiento y productividad.</p>
+        <p style="font-size: 10px; margin-bottom: 2px; ">5/ Solo para empresas con más de 50 trabajadores.
+            <br> * Dato no obligatorio.</p>
+    </div>
+</div>
+<!-- <pre>{{baseEntity | json}}</pre>
+<pre>{{TrainingScore | json}}</pre> -->

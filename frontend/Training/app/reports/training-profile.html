@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Training</title>
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="printStyle.css" />
+    <!-- <link rel="stylesheet" href="angular-material.css" /> -->
+</head>
+
+<body>
+    <style type="text/css">
+    /*Specific current form styles*/
+
+    @page {
+        size: portrait;
+        margin: 2mm 2mm 2mm 2mm;
+    }
+
+    #main {
+        width: 54mm;
+        max-width: 54mm;
+        padding: 0;
+        font-size: 8px;
+    }
+
+    th {
+        border-bottom: 1px solid #ddd;
+        vertical-align: middle !important;
+    }
+
+    input {
+        border: none;
+        min-height: 20px;
+        padding: 2px !important;
+    }
+
+    pre {
+        font-family: inherit;
+        font-size: inherit;
+        border-radius: 0;
+        border: none;
+        height: 100%;
+        line-height: 20px;
+        background: transparent;
+        vertical-align: top;
+        padding: 0 0;
+        margin: 0;
+    }
+
+    /*END Specific current form styles*/
+
+    </style>
+    <div id="main" class="container-fluid" style="display:none;">
+        <div class="hidden-print">
+            <br>
+            <input type="button" class="btn btn-info" value="Print" onclick="onPrint();" />
+        </div>
+    </div>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var source = opener.$('.printableZone').clone();
+        $('#main').append(source);
+
+        //Attachments
+
+        $('attachments-box').each(function() {
+            var eAttachments = $(this).find('a').get().map(function(a) {
+                return a.text;
+            }).join('<br/>');
+            $(this).html(eAttachments);
+            // $(this).find('a').after('<br />');
+        });
+
+        //End Attachments
+
+
+        $('.col-sm-1').removeClass('col-sm-1').addClass('col-xs-1');
+        $('.col-sm-2').removeClass('col-sm-2').addClass('col-xs-2');
+        $('.col-sm-3').removeClass('col-sm-3').addClass('col-xs-3');
+        $('.col-sm-4').removeClass('col-sm-4').addClass('col-xs-4');
+        $('.col-sm-5').removeClass('col-sm-5').addClass('col-xs-5');
+        $('.col-sm-6').removeClass('col-sm-6').addClass('col-xs-6');
+        $('.col-sm-7').removeClass('col-sm-7').addClass('col-xs-7');
+        $('.col-sm-8').removeClass('col-sm-8').addClass('col-xs-8');
+        $('.col-sm-9').removeClass('col-sm-9').addClass('col-xs-9');
+        $('.col-sm-10').removeClass('col-sm-10').addClass('col-xs-10');
+        $('.col-sm-11').removeClass('col-sm-11').addClass('col-xs-11');
+        $('.col-sm-12').removeClass('col-sm-12').addClass('col-xs-12');
+
+        $('.form-control').removeClass('form-control');
+        $('.control-label').removeClass('control-label');
+        $('td').css('width', '');
+        $('th').css('width', '');
+        $('.container').removeClass('container').addClass('container-fluid');
+
+
+        $('.hidden').remove();
+
+
+        $('ng-wig').each(function() {
+            $(this).replaceWith($(this).find('#ng-wig-editable').get(0).innerHTML);
+        });
+
+        // $('input:not(button)').each(function() {
+        //     $(this).replaceWith('<div style="width:100%;text-align:left;min-height:10px;padding-left: 6px;">' + this.value + '</div>');
+        // });
+        $('button.md-datepicker-triangle-button').remove();
+        $('md-icon').empty();
+
+        $('.hidden-print:not(:first)').each(function() {
+            $(this).css('display', 'none');
+        });
+
+        $('.select2-container').next().hide();
+        $('select').prop('disabled', 'true');
+        $('input[type="checkbox"]').prop('disabled', 'true');
+
+        $('.hidden-xs').removeClass('hidden-xs');
+        $('.visible-xs').removeClass('visible-xs');
+
+        $('textarea').each(function() {
+            $(this).replaceWith('<div style="width:100%;text-align:left;min-height:10px;">' + this.value + '</div>');
+        });
+
+        //[Specific for Current Report] Form specific adjustments------------------------------------------------------
+
+        //End [Specific for Current Report] Form specific adjustments--------------------------------------------------
+
+
+        $('#main').show();
+
+        onPrint();
+
+    });
+
+    function onPrint() {
+        window.document.close();
+        window.print();
+    }
+
+    </script>
+</body>
+
+</html>

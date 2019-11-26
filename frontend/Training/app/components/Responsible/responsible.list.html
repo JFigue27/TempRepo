@@ -1,0 +1,16 @@
+<h2 class="md-display-1">Select Responsible</h2>
+<div layout="column" layout-padding flex>
+    <div layout="row" flex>
+        <span flex></span>
+        <input flex type="text" ng-model-options="{debounce: 200}" class="text-center form-control" placeholder="Search" ng-model="filterOptions.filterGeneral" style="min-width:180px;max-width:280px;" ng-change="refresh()">
+        <button type="button" class="btn btn-default" ng-click="filterOptions.filterGeneral = '';refresh();" style="padding: 4px 8px;"><span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+    <md-list class="md-whiteframe-6dp" flex>
+        <md-list-item ng-style="{ background: currentSelectedId == item.id ? 'rgba(111, 181, 103, 0.39)' : null}" ng-repeat="item in baseList | filter:search" ng-click="selectItem(item);" layout>
+            <div flex class="md-list-item-text" layout="column" layout-alignment="center">
+                <p>{{item.Value}}</p>
+            </div>
+        </md-list-item>
+    </md-list>
+</div>

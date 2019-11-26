@@ -1,0 +1,363 @@
+.md-subheader.md-default-theme,
+.md-subheader {
+    background-color: #F5F5F6;
+}
+
+md-content.md-default-theme,
+md-content {
+    background-color: #F5F5F6;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ff0000;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-family: inherit;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: rgb(255, 0, 0);
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-family: inherit;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    background-color: transparent;
+    color: rgb(231, 231, 231);
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-family: inherit;
+}
+
+.MainToolbar {
+    background-color: black !important;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: rgb(97,97,97);
+    color: rgb(0, 0, 0);
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-menu-toolbar) md-icon {
+    color: rgb(250,250,250);
+    fill: rgb(0, 0, 0);
+}
+
+.md-button.md-accent:not([disabled]) md-icon {
+    color: rgb(250,250,250);
+}
+
+md-nav-bar .md-button._md-nav-button.md-unselected {
+    color: #f5f5f5;
+}
+
+.md-button.md-accent {
+    color: #ff0000;
+}
+
+md-nav-bar md-nav-ink-bar {
+    background-color: #ff0000;
+}
+
+
+md-input-container .md-placeholder,
+md-input-container.md-default-theme label,
+md-input-container label {
+    color: black;
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+md-input-container:not(.md-input-invalid).md-input-has-value label {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+@media (max-width: 599px) {
+    .layout-xs-column>.flex {
+        min-height: 50px;
+    }
+}
+
+md-select .md-select-value.md-select-placeholder {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.md-select-value {
+
+    padding: 2px 2px 6px;
+}
+
+.login {
+    img {
+        width: 40%;
+        margin: auto;
+        vertical-align: middle;
+        width: 175px;
+        margin-left: 50px;
+    }
+    .well {
+        background-color: #000000;
+        border: 1px solid #000000;
+    }
+    h1,
+    h2 {
+        color: rgba(255, 255, 255, 0.7);
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 30px;
+        font-style: inherit;
+        font-family: inherit;
+    }
+    label {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .btn-info {
+        color: #ffffff;
+        background-color: #ff0000;
+        border-color: #ff0000;
+    }
+    .btn-info:active:focus {
+        color: #ffffff;
+        background-color: #484848;
+        border-color: #484848;
+    }
+    .btn-info:focus,
+    .btn-info:hover {
+        color: #ffffff;
+        background-color: #484848;
+        border-color: #484848;
+    }
+    input {
+        color: #ffffff;
+        background-color: #484848;
+        border-color: #484848;
+    }
+    .form-control:focus {
+        border-color: #ff0000;
+    }
+    .btn-info:focus {
+        border-color: #ff0000;
+    }
+}
+
+.table-hover {
+    tbody {
+        tr:hover {
+            background-color: #e4e4e4;
+        }
+    }
+}
+
+.md-select-value {
+    min-height: 18px;
+}
+
+.table-condensed>thead>tr>td,
+.table-condensed>tbody>tr>td,
+.table-condensed>tfoot>tr>td {
+    padding: 4px;
+    md-input-container {
+        margin: 0;
+    }
+}
+
+md-input-container {
+    padding: 1px;
+}
+
+.md-datepicker-input {
+    min-width: 125px;
+}
+
+md-radio-button.md-checked .md-off {
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+md-radio-button .md-on {
+    background-color: rgba(0, 0, 0, 0.87);
+}
+
+md-checkbox.md-checked .md-icon {
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+.JOB_APPLICATION {
+    h3 {
+        margin-bottom: 30px;
+        font-size: 18px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #dadada;
+    }
+}
+
+.RH {
+    h3 {
+        margin-bottom: 30px;
+        font-size: 18px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #dadada;
+    }
+    max-width: 800px;
+    margin: auto;
+    padding: 15px;
+}
+
+.SAP {
+    h3 {
+        margin-bottom: 30px;
+        font-size: 18px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #dadada;
+    }
+    max-width: 800px;
+    margin: auto;
+    padding: 15px;
+}
+
+md-input-container .md-input[disabled] {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+
+.CONTRACT {
+    max-width: 800px;
+    margin: auto;
+    padding: 15px;
+}
+
+md-tabs.md-default-theme md-ink-bar,
+md-tabs md-ink-bar {
+    color: #ff0000;
+    background: #ff0000;
+}
+
+.RecruitTag {
+    max-width: 500px;
+    margin: auto;
+    padding: 15px;
+}
+
+
+.TagsReport {
+    max-width: 800px;
+    margin: auto;
+    .TagContainer {
+        display: inline-block;
+        margin: 20px;
+        float: left;
+    }
+}
+
+md-tabs.md-default-theme .md-tab.md-active,
+md-tabs .md-tab.md-active,
+md-tabs.md-default-theme .md-tab.md-active md-icon,
+md-tabs .md-tab.md-active md-icon,
+md-tabs.md-default-theme .md-tab.md-focused,
+md-tabs .md-tab.md-focused,
+md-tabs.md-default-theme .md-tab.md-focused md-icon,
+md-tabs .md-tab.md-focused md-icon {
+    color: #ff0000;
+}
+
+.md-button.md-warn.md-fab {
+    background-color: #424242;
+}
+
+.md-button.md-warn.md-fab:not([disabled]).md-focused {
+    background-color: #ff0000;
+}
+
+.md-button.md-warn.md-fab:not([disabled]):hover {
+    background-color: #ff0000;
+}
+
+.md-button.md-primary.md-fab:not([disabled]):hover {
+    background-color: #ff0000;
+}
+
+.md-button.md-primary.md-fab {
+    background-color: #c20000;
+}
+
+.md-button.md-raised:not([disabled]):hover {
+    background-color: #ff0000;
+}
+
+.md-subheader {
+    background-color: #e8e8e8;
+}
+
+md-select:not([disabled]):focus .md-select-value {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 6px;
+}
+
+md-input-container.md-input-focused .md-input,
+md-input-container .md-input.ng-invalid.ng-dirty,
+md-input-container.md-input-resized .md-input {
+    padding-bottom: 0;
+    border-width: 0 0 1px 0;
+}
+
+
+.ErrorMessage {
+    color: red;
+    padding: 3px;
+    margin: 0;
+    font-size: 11px;
+}
+.DC3Form {
+    table.table-bordered {
+        tr th {
+            border: solid black 1px;
+            padding: 0;
+            background: black;
+            color: white;
+            height: 30px;
+            vertical-align: middle;
+            h5, p {
+                padding: 0 5px;
+            }
+        }
+        tr td {
+            text-align: left;
+            border: solid black 1px;
+            padding: 0;
+            vertical-align: bottom;
+            h5, p {
+                padding: 0 5px;
+                margin-bottom: 3px;
+            }
+            span {
+                text-align: center;
+            }
+        }
+    }
+    .DC3Signatures {
+        border: solid 1px black;
+        td {
+            padding: 5px;
+            text-align: center;
+        }
+    }
+    .LetterField {
+        border-right: 1px gray solid;
+        height: 27px;
+    }
+}

@@ -1,0 +1,11 @@
+<div class="text-right" style="min-height: 30px;">
+    <dir-pagination-controls pagination-id="Shifts" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
+<md-list class="md-whiteframe-6dp">
+    <md-list-item pagination-id="Shifts" dir-paginate="item in baseList | itemsPerPage: filterOptions.perPage track by item.id" total-items="filterOptions.itemsCount" current-page="filterOptions.page" ng-click="openItem(item, $event);" layout layout-align="center center">
+        <span>{{item.Value}}</span>
+        <md-button class="btnWithIconSM md-raised md-secondary" ng-click="removeItem(item);">
+            <md-icon style="color:rgb(66,66,66);">delete</md-icon>
+        </md-button>
+    </md-list-item>
+</md-list>

@@ -1,0 +1,37 @@
+<form>
+    <div layout="column" layout-padding>
+        <md-input-container flex>
+            <label>Name to Display</label>
+            <input ng-change="on_input_change(baseEntity);" ng-model="baseEntity.Value" md-autofocus/>
+        </md-input-container>
+        <md-input-container flex>
+            <label>User Name</label>
+            <input ng-change="on_input_change(baseEntity);" ng-model="baseEntity.UserName" />
+        </md-input-container>
+        <md-input-container flex>
+            <label>Role</label>
+            <md-select ng-change="on_input_change(baseEntity);" ng-model="baseEntity.Role" ng-init="baseEntity.Role = 'User'">
+                <md-option ng-repeat="role in ['Administrator', 'RH', 'Supervisor', 'Trainer']" value="{{role}}">
+                    {{role}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <div md-whiteframe="8" style="padding: 20px;" layout="column">
+            <md-checkbox ng-change="on_input_change(baseEntity);" ng-model="baseEntity.ChangePassword" ng-if="baseEntity.id > 0" aria-label="Change Password" style="margin:20px;">
+                Update Password
+            </md-checkbox>
+            <div class="form-group" ng-if="!baseEntity.id || baseEntity.ChangePassword">
+                <div class="col-xs-12">
+                    <label>Password</label>
+                    <input type="password" class="form-control" ng-change="on_input_change(baseEntity);" ng-model="baseEntity.Password" />
+                </div>
+            </div>
+            <div class="form-group" ng-if="!baseEntity.id || baseEntity.ChangePassword">
+                <div class="col-xs-12">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" ng-change="on_input_change(baseEntity);" ng-model="baseEntity.ConfirmPassword" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="container">
+        <h2>
+            <md-icon>insert_chart</md-icon>Reports
+        </h2>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <td style="text-align: left;">
+                            <h4>Headcount</h4>
+                        </td>
+                        <td style="max-width: 5em;text-align: right;">
+                            <a href="" ng-href="{{baseURL}}Report/Headcount/{{currentUser.UserName}}" class="btn btn-primary">Download</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <h4>Todos los cursos</h4>
+                        </td>
+                        <td style="max-width: 5em;text-align: right;">
+                            <a href="" ng-href="{{baseURL}}Report/AllTrainings/{{currentUser.UserName}}" class="btn btn-primary">Download</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <h4>Proximos a Expirar</h4>
+                        </td>
+                        <td style="max-width: 5em;text-align: right;">
+                            <a href="" ng-href="{{baseURL}}Report/AboutToExpire/{{currentUser.UserName}}" class="btn btn-primary">Download</a>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td style="text-align: left;">
+                            <h4>Personal con certificaciones vigentes</h4>
+                        </td>
+                        <td style="max-width: 5em;text-align: right;">
+                            <a href="" ng-href="{{baseURL}}Report/AboutToExpire/{{currentUser.UserName}}" class="btn btn-primary">Download</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <h4>Cardex por turno, por área</h4>
+                        </td>
+                        <td style="max-width: 5em;text-align: right;">
+                            <a href="" ng-href="{{baseURL}}Report/AboutToExpire/{{currentUser.UserName}}" class="btn btn-primary">Download</a>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

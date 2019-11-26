@@ -1,0 +1,147 @@
+.NeedsAttention {
+    background-color: #D9534F !important;
+    -webkit-animation: needsAttentionAnimation .8s infinite;
+    animation: needsAttentionAnimation .8s infinite;
+}
+
+@-webkit-keyframes needsAttentionAnimation {
+    from {
+        background: #D9534F;
+    }
+    to {
+        background: #F2DEDE;
+    }
+}
+
+@keyframes needsAttentionAnimation {
+    from {
+        background: #D9534F;
+    }
+    to {
+        background: #F2DEDE;
+    }
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.SearchBox {
+    position: relative;
+    margin-right: 5px;
+    input[type="search"] {
+        width: 200px;
+        border: none;
+        text-align: center;
+        padding: 0 15px;
+        height: 40px;
+        color: #303030;
+    }
+    button {
+        margin: 0;
+        width: 40px;
+        min-width: 40px;
+    }
+    .clear-button {
+        background: transparent;
+        position: absolute;
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        right: 40px;
+        bottom: 0;
+        z-index: 2;
+        md-icon path {
+            fill: rgb(117, 117, 117);
+        }
+    }
+}
+
+.FilterSelect {
+    background: white;
+    height: 40px;
+    margin: 0 5px;
+    min-width: 200px;
+    padding: 5px;
+    .md-select-value {
+        border: none !important;
+        span {
+            color: #777777;
+            div {
+                color: #303030 !important;
+            }
+        }
+    }
+}
+
+
+// Material
+.TableEditable {
+    margin-bottom: 0 !important;
+    max-width: 800px;
+    margin: auto;
+    td,
+    th {
+        border: none !important;
+        padding: 3px 5px !important;
+    }
+
+    md-input-container {
+        margin: 0;
+    }
+
+    input:not(button) {
+        padding: 0px;
+        margin: 0;
+        width: 100%;
+        background: rgb(245, 245, 245);
+        /*border: none;*/
+    }
+
+    textarea {
+        padding: 0px;
+        margin: 0;
+        width: 100%;
+        background: rgb(245, 245, 245);
+        border: none;
+        resize: none;
+    }
+
+    md-input-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    md-input-container .md-errors-spacer {
+        display: none;
+    }
+}
+
+th.rotate {
+    /* Something you can count on */
+    height: 140px;
+    white-space: nowrap;
+    position: relative;
+}
+
+th.rotate>div {
+    transform: /* Magic Numbers */
+    translate(25px, 51px)
+    /* 45 is really 360 - 45 */
+    rotate(315deg);
+    width: 30px;
+    position: absolute;
+    bottom: 65px;
+}
+
+th.rotate>div>span {
+    border-bottom: 1px solid #ccc;
+}

@@ -1,0 +1,27 @@
+<!-- <pre> {{baseEntity | json}} </pre> -->
+<div layout="row">
+    
+<div layout="column" flex="40">
+    <md-input-container>
+        <label>Job Position Name</label>
+        <input type="text" ng-model="baseEntity.Value" md-autofocus>
+    </md-input-container>
+    <div layout="column" flex>
+        <label class="md-subhead">Skills:</label>
+        <md-chips style="width: 100%;margin-bottom: 40px;" ng-model="baseEntity.SelectedSkills" md-autocomplete-snap md-require-match="true" md-transform-chip="newSkill($chip)" md-add-on-blur="false">
+            <md-autocomplete md-selected-item="selectedSkill" md-search-text="searchSkillText" md-items="oSkill in querySkills(searchSkillText, baseEntity)" md-item-text="oSkill[displayProperty]" placeholder="Select Skills" md-min-length="0" md-no-cache="true">
+                <span md-highlight-text="searchSkillText" style="font-size: .9em;">{{oSkill[displayProperty]}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span style="font-size: .8em;">{{$chip[displayProperty]}}</span>
+            </md-chip-template>
+        </md-chips>
+    </div>
+</div>
+    <div layout="column" flex="60" style="margin-top: 20px; margin-left: 20px;">
+        <label>Description</label>
+        <ng-wig ng-model="baseEntity.Description">
+        </ng-wig>
+    </div>
+
+</div>

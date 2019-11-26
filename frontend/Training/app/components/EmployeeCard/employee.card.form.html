@@ -1,0 +1,37 @@
+<div class="printableZone" style="width: 100%;margin: auto;">
+    <!-- Starts card -->
+    <div style="width: 100%;height: 86mm;display:inline-block;padding: 2px;">
+        <div style="position: relative; margin-top: 30px;">
+            <div style="width:8em;height:8em;">
+                <avatar owner-entity="baseEntity" when-change="onAvatarChange(oEntity)"></avatar>
+            </div>
+            <img src="images/molex-logo.png" style="position: absolute;top:0;right:0;" height="15px" alt="Molex">
+            <div style="position: absolute;top:30px;right: 0;">
+                <p class="text-right" style="font-size: 1em;margin: 0;">{{baseEntity.Name}} {{baseEntity.LastName}} {{baseEntity.MotherLastName}}</p>
+                <div style="font-size: .8em;">
+                    <p class="text-right" style="margin:0;"> {{baseEntity.JobPosition.Value | uppercase}} </p>
+                    <p class="text-right" style="margin:0;">{{baseEntity.PersonalNumber}}</p>
+                    <p class="text-right" style="margin:0;">{{baseEntity.Shift.Value}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="padding: 5px;">
+                <h4 class="md-title" style="text-align: center; font-size: 1.5em; margin-top: 3px; margin-bottom: 3px;">{{baseEntity.Level1.Value}}</h4>
+                <table class="table table-condensed" style="font-size: .8em;">
+                    <tr>
+                        <th>Certification</th>
+                        <th>Certified At</th>
+                        <th>Expires At</th>
+                    </tr>
+                    <tr ng-repeat="certification in baseEntity.certifications | filter:{AppliesToDC3:false}">
+                        <td style="padding: 2px; text-align: left;">{{certification.Value}}</td>
+                        <td style="padding: 2px; min-width: 48px;">{{certification.DateCertified | date:'shortDate'}}</td>
+                        <td style="padding: 2px; min-width: 48px;">{{certification.DateExpiresAt | date:'shortDate'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <pre>{{baseEntity | json}}</pre> -->

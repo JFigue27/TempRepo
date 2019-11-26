@@ -1,0 +1,18 @@
+<training-list></training-list>
+<nav class="toolbar-bottom">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span layout="row" flex="none">
+                <input type="text" ng-model-options="{debounce: 200}" class="text-center form-control" placeholder="Search" ng-model="filterOptions.filterGeneral" style="max-width:180px;" ng-change="refresh()">
+                <button type="button" class="btn btn-default" ng-click="filterOptions.filterGeneral = '';refresh();" style="padding: 4px 8px;"><span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </span>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-button class="md-fab md-primary" aria-label="New Training" ng-click="create($event);" style="position: fixed;
+    bottom: 30px;right: 10px;width: 70px;height: 70px;font-size: 50px;padding: 0;">
+        <md-tooltip md-direction="left">Add Training</md-tooltip>
+        <md-icon style="margin: 0;font-size: 50px;top: -12px;position: relative;left: 10px;">add</md-icon>
+    </md-button>
+</nav>

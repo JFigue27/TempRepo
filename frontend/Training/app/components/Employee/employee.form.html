@@ -1,0 +1,103 @@
+<!-- <pre>{{baseEntity | json}}</pre> -->
+<div layout="row">
+    <div flex></div>
+    <md-datepicker name="text" ng-change="on_input_change(baseEntity);" ng-model="baseEntity.HireDate" md-placeholder="Hire Date">
+    </md-datepicker>
+</div>
+<div layout="column">
+    <div layout="row">
+        <md-input-container flex>
+            <label>Name</label>
+            <input type="text" ng-model="baseEntity.Name" md-autofocus>
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>Last Name</label>
+            <input type="text" ng-model="baseEntity.LastName">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Mother Last Name</label>
+            <input type="text" ng-model="baseEntity.MotherLastName">
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>CURP</label>
+            <input type="text" ng-model="baseEntity.CURP" md-autofocus>
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>Clock Number</label>
+            <input type="text" ng-model="baseEntity.ClockNumber">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Personal Number</label>
+            <input type="text" ng-model="baseEntity.PersonalNumber">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Time Id Number</label>
+            <input type="text" ng-model="baseEntity.TimeIdNumber">
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>STPS Position</label>
+            <input type="text" ng-model="baseEntity.STPSPosition" md-autofocus>
+        </md-input-container>
+    </div>
+    <div layout>
+        <md-input-container flex>
+            <label>Job Position</label>
+            <md-select ng-model="baseEntity.JobPositionKey" ng-change="onJobPositionChange()">
+                <md-option ng-value="opt.id" ng-repeat="opt in JobPositions">{{opt.Value}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>Shift</label>
+            <md-select ng-model="baseEntity.ShiftKey">
+                <md-option ng-value="opt.id" ng-repeat="opt in Shifts">{{ opt.Value }}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>Supervised by</label>
+            <md-select ng-model="baseEntity.SupervisorKey">
+                <md-option ng-value="opt.id" ng-repeat="opt in Supervisors">{{opt.Name}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>Area</label>
+            <md-select ng-model="baseEntity.Level1Key">
+                <md-option ng-value="opt.id" ng-repeat="opt in Areas">{{opt.Value}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div layout="column" flex>
+        <label class="md-subhead">Employee Skills:</label>
+        <md-chips style="width: 100%;margin-bottom: 40px;" ng-model="baseEntity.SelectedSkills" md-autocomplete-snap md-require-match="true" md-transform-chip="newSkill($chip)" md-add-on-blur="false">
+            <md-autocomplete md-selected-item="selectedSkill" md-search-text="searchSkillText" md-items="oSkill in querySkills(searchSkillText, baseEntity)" md-item-text="oSkill[displayProperty]" placeholder="Select Skills" md-min-length="0" md-no-cache="true">
+                <span md-highlight-text="searchSkillText" style="font-size: .9em;">{{oSkill[displayProperty]}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span style="font-size: .8em;">{{$chip[displayProperty]}}</span>
+            </md-chip-template>
+        </md-chips>
+    </div>
+    <div layout="column" flex>
+        <label class="md-subhead">Job Position Skills:</label>
+        <md-chips readonly="true">
+            <md-chip ng-class="isMissingSkill(s)" ng-repeat="s in JobPositionSkills">{{s.Value}}</md-chip>
+        </md-chips>
+    </div>
+</div>
+<style>
+    .isMissingSkill {
+        background: red;
+        color: white;
+    }
+</style>

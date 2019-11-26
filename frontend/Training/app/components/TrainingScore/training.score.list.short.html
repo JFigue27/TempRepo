@@ -1,0 +1,30 @@
+<div layout>
+    <md-checkbox ng-model="filterOptions.AppliesToDC3" ng-change="refresh()">
+        Applies To DC3
+    </md-checkbox>
+</div>
+<div class="text-right" style="min-height: 30px;">
+    <dir-pagination-controls pagination-id="Certifications" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
+<!-- <pre>{{baseList | json}}</pre> -->
+<md-button class="md-raised md-secondary" ng-click="printSelected()">Print Selected</md-button>
+
+<md-list class="md-whiteframe-6dp">
+    <md-list-item pagination-id="Certifications" dir-paginate="item in baseList | itemsPerPage: filterOptions.perPage track by item.id"
+    total-items="filterOptions.itemsCount" current-page="filterOptions.page" ng-click="openItem(item, $event);" layout layout-align="center center">
+        <span flex>{{item.Training.CatCertification.Value}}</span>
+        <md-button class="md-raised md-secondary" ng-click="openDC3Format($event, item)" ng-show="item.Training.CatCertification.AppliesToDC3">DC3 Format</md-button>
+        <md-checkbox ng-model="item.toPrint" ng-change="toggleToPrint(item);"></md-checkbox>
+        <md-button class="btnWithIconSM md-raised md-secondary" ng-click="removeItem(item);">
+            <md-icon style="color:rgb(66,66,66);">delete</md-icon>
+        </md-button>
+        <md-input-container>
+            <md-select ng-model="item.ILUO" ng-change="onIluoChange(item)" placeholder="ILUO">
+                <!--md-on-close: expression; multiple:boolean; placeholder: string;-->
+                <md-select-label>Category ILUO</md-select-label>
+                <md-option ng-repeat="category in ['ILUO',' I ', ' L ', ' U ', ' O ']" value={{category}}> {{category}} </md-option>
+            </md-select>
+        </md-input-container>
+    </md-list-item>
+</md-list>
+<!-- <pre>{{baseList | json}}</pre> -->

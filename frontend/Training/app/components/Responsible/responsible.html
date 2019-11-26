@@ -1,0 +1,9 @@
+<div ng-hide="isLoading">
+    <label style="font-size: .8em;">{{title}}</label>
+    <a href="" ng-click="changeResponsible()" style="font-size: .8em;">{{baseEntity.Value}}</a>
+    <modal title="Select new Responsible" modal-id="modal-responsible" ok-label="Select" max-width="400">
+        <modal-body>
+            <responsible-list></responsible-list>
+        </modal-body>
+    </modal>
+</div>

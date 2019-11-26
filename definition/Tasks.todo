@@ -1,0 +1,61 @@
+HR-Training:
+  Catalogs:
+    ☐ Employees @created(18-02-16 12:52)
+        ☐  @created(18-02-16 14:15)
+    ☐ Certifications @created(18-02-16 12:52)
+        ☐ time to life? @created(18-02-16 15:01)
+        ☐ Certification score @created(18-02-21 14:53)
+    ☐ Areas @created(18-02-16 12:52)
+    ☐ Workstations @created(18-02-16 12:52)
+    ☐ Supervisors @created(18-02-16 12:53)
+      ☐ Already on FrontEnd - Pending backEnd @created(18-02-16 14:36)
+    ☐ Shifts @created(18-02-16 12:54)
+      ☐ Already on FrontEnd - Pending backEnd @created(18-02-16 14:37)
+
+  DashBoard:
+    Charts:
+    ☐ Grafica del porcentaje general del personal entrenado en Molex JRZ.
+      -Por genero
+      -Por Turno
+    ☐ Grafica por Área y Estación de trabajo con la cantidad y porcentaje de personal entrenado.
+      -Por genero
+      -Por turno
+    ☐ Los reportes mencionados podrán ser vistos en pantalla HTML y exportados a Excel.
+    ✔ Crear e imprime forma DC3 por empleado. @done (19-04-07 00:06)
+
+    Armando:
+
+Buenos dias. En base a lo que platicamos te comento el listado de mejoras que necesitamos hacerle al sistema para mejorar su funcionalidad y nos permita cumplir con los requerimientos de nuestros clientes internos y externos, así como para temas de auditorias:
+
+1)  El Sistema sea capaz de generar Reportes de:
+  a)  Estatus de Entrenamiento: 
+    ✔ VIgencias de Cursos @done (19-04-08 22:15)
+    ✔ Cursos Próximos a Vencer @done (19-04-09 09:49)  
+    ☐ notificacion por correo... @created(19-04-09 09:49)
+    ☐ Listado de Cursos Asignados
+    ☐ Personal con Cursos asignados (Prgramados)....
+    ✔ Listado de Personal por Supervisor, Por Turno, por Area. @done (19-04-08 22:15)
+2)  Vincular o Generar Niveles de Competencia:
+  ☐ a)  Personal a Capacitar 
+  ☐ b)  Personal Capacitado
+  ☐ c)  Personal Certificado
+  ☐ d)  Personal Competente
+  ☐ e)  Personal con Categoria de Experto o Entrenador (Catalogo de Iluo para categorizarlos, "Agregar promedio"). Poner bandera en certificacion...
+3)  Listado de Competencias Requeridas y Mandatorias por Posición y cantidad de personas que están en esta posición.:
+  ☐ Agregar reporte Listado de certificaciones vigentes por persona @created(19-04-09 13:56)
+  ☐ Reporte de cardex por persona en excel, y por area y por turno.  @created(19-04-10 13:39)
+  ☐  @created(19-04-10 13:41)
+
+Requerimetos por Juarez:
+  ☐ En pantalla de la Matrix contar personal certificados hay por cada Area y turno "Mostrar el numero junto con el titulo." @created(19-04-05 08:57)
+  ✔ Que el buscador encuentre por nombre de certificacion...(Como hacer para que el buscador encuentre dentro de un objeto...?) @created(19-04-05 08:59) @done (19-04-07 00:06)
+  En la lista de entrenamientos de DC3:
+    ☐ Mostrar Puros entrenamientos DC3 @created(19-04-05 10:39)
+    ✔ Imprimir Formato DC3 por certificacion @created(19-04-05 10:39) @done (19-04-05 10:46)
+    ☐ Ver en HTML Reporte entrenamientos DC3 @created(19-04-05 10:44)
+
+ 
+To Fix:
+ ☐ Trainings no aparecen en matriz
+ ☐ Se repite registro en score
+

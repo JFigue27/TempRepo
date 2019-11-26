@@ -1,0 +1,21 @@
+<div class="text-right" style="min-height: 30px;">
+    <dir-pagination-controls class="SmallPagination" pagination-id="Dc3s" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th></th>
+                <!-- start:generated:ths  -->
+                <!-- start:generated:ths  -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr pagination-id="Dc3s" dir-paginate="item in baseList | itemsPerPage: filterOptions.perPage track by item.id" total-items="filterOptions.itemsCount" current-page="filterOptions.page">
+                <td>{{item.itemIndex}}</td>
+                <!-- start:generated:tds  -->
+                <!-- start:generated:tds  -->
+            </tr>
+        </tbody>
+    </table>
+</div>

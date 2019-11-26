@@ -1,0 +1,18 @@
+<!-- <pre> {{baseEntity | json}} </pre> -->
+<div layout="column">
+    <md-input-container>
+        <label>Area Name</label>
+        <input type="text" ng-model="baseEntity.Value" md-autofocus />
+    </md-input-container>
+    <div layout="column" flex>
+        <label class="md-subhead">Certifications:</label>
+        <md-chips style="width: 100%;margin-bottom: 40px;" ng-model="baseEntity.SelectedCertifications" md-autocomplete-snap md-require-match="true" md-transform-chip="newCertification($chip)" md-add-on-blur="false">
+            <md-autocomplete md-selected-item="selectedCertification" md-search-text="searchCertificationText" md-items="oCertification in queryCertifications(searchCertificationText, baseEntity)" md-item-text="oCertification[displayProperty]" placeholder="Select Certifications" md-min-length="0" md-no-cache="true">
+                <span md-highlight-text="searchCertificationText" style="font-size: .9em;">{{oCertification[displayProperty]}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span style="font-size: .8em;">{{$chip[displayProperty]}}</span>
+            </md-chip-template>
+        </md-chips>
+    </div>
+</div>

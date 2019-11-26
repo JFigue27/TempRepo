@@ -1,0 +1,93 @@
+<div class="text-right" style="min-height: 30px;">
+    <dir-pagination-controls pagination-id="MatrixPagination" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
+<!-- <pre>{{baseList | json}}</pre> -->
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="max-width: 120px; min-width: 120px;">Print Card</th>
+                <th style="max-width: 200px; min-width: 200px;">Name</th>
+                <th>Personal Number</th>
+                <!-- <th style="min-width: 95px; max-width: 95px;">Hired Date</th> -->
+                <th class="rotate-" ng-repeat="certification in theCertifications" style="width: 150px;max-width: 150px;min-width: 150px;">
+                    <div><span>{{certification.Value}}</span></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr pagination-id="MatrixPagination" dir-paginate="item in baseList | itemsPerPage: filterOptions.perPage track by item.id" total-items="filterOptions.itemsCount" current-page="filterOptions.page" ng-click="openItem(item, $event);">
+                <td>
+                    <md-button class="btnWithIconSM" ng-click="openEmployeeCard(item, $event);"><md-icon>account_box</md-icon></md-button>
+                </td>
+                <td style="text-align: left">{{item.Name}} {{ item.LastName}} {{item.MotherLastName}} </td>
+                <td>
+                    {{item.PersonalNumber}}
+                </td>
+                <!-- <td>{{item.HireDate | date:'mediumDate'}}</td> -->
+                <td ng-repeat="certification in item.CertificationsByEmployee" ng-class="certification.forCurrentEmployee.CssStatusClass">
+                    <b>{{certification.TrainingInfo.DateExpiresAt | date:'mediumDate'}}</b>
+                    <md-button class="btnWithIconSM" ng-click="openQuickCertification($event, certification, item)" >
+                        <md-icon>bookmark</md-icon>
+                    </md-button>
+ <!--                    <md-icon class="btnWithIconSM">bookmark</md-icon> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<nav class="toolbar-bottom">
+    <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+            <div layout="row" flex="none" class="SearchBox md-whiteframe-z1">
+                <input type="search" ng-model-options="{debounce: 700}" ng-style="{'background': filterOptions.filterGeneral ? 'yellow' : ''}" placeholder="Search" ng-model="filterOptions.filterGeneral" ng-change="refresh()">
+                <md-button class="md-raised md-accent md-hue-2" ng-click="filterOptions.filterGeneral = '';refresh();">
+                    <md-icon>clear</md-icon>
+                </md-button>
+            </div>
+            <md-select ng-model="filterOptions.ShiftKey" placeholder="Shift" ng-style="{'background': filterOptions.ShiftKey > 0 ? 'yellow' : ''}" class="FilterSelect md-whiteframe-z1" ng-change="onShiftChange();refresh();">
+                <md-option ng-value="null">All Shifts</md-option>
+                <md-option ng-value="item.id" ng-repeat="item in theShifts">{{ item.Value }}</md-option>
+            </md-select>
+            <md-select ng-model="filterOptions.Level1Key" placeholder="Area" ng-style="{'background': filterOptions.Level1Key > 0 ? 'yellow' : '', 'background': !filterOptions.Level1Key ? 'rgb(255,204,188)': 'null'}" class="FilterSelect md-whiteframe-z1" ng-change="onAreaChange();refresh();">
+                <md-option ng-value="null">Select Area</md-option>
+                <md-option ng-value="item.id" ng-repeat="item in theAreas">{{ item.Value }}</md-option>
+            </md-select>
+            <md-checkbox ng-model="filterOptions.AppliesToDC3" style="margin-left: 15px;" ng-change="refresh();">
+                Filter To DC3 Format
+            </md-checkbox>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+</nav>
+<modal modal-id="modal-QuickCertification" ok-label="Save" max-width="500" title="Quick Certification" new-click="true" remove-label="Delete" ng-if="currentUser.Role == 'RH' || currentUser.id == '-1'">
+    <modal-body>
+        <quick-training></quick-training>
+    </modal-body>
+</modal>
+<modal modal-id="modal-EmployeeCard" ok-label="Save" max-width="450" show-print="true">
+    <modal-body>
+        <employee-card-form></employee-card-form>
+    </modal-body>
+</modal>
+<style type="text/css">
+body {
+    padding-bottom: 64px;
+}
+
+.CertificationExpired {
+    background: red;
+    color: white;
+}
+
+.CertificationOK {
+    background: green;
+    color: white;
+}
+
+.CertificationAboutToExpire {
+    background: orange;
+    color: white;
+}
+
+</style>

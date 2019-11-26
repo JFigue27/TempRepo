@@ -1,0 +1,43 @@
+{
+  "name": "gulpapp",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "angular": "^1.6.6",
+    "angular-animate": "^1.6.6",
+    "angular-route": "^1.6.6",
+    "angular-sanitize": "^1.6.6",
+    "angular-touch": "^1.6.6",
+    "moment": "^2.18.1",
+    "angular-local-storage": "^0.7.1",
+    "ngActivityIndicator": "^0.1.10",
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
+    "jquery": "^3.2.1",
+    "selectize": "^0.12.4",
+    "angular-file-upload": "^2.5.0",
+    "angular-material": "^1.1.4",
+    "font-awesome": "^4.7.0",
+    "handsontable": "^0.34.5",
+    "alertify-js": "^1.11.0",
+    "ngWig": "ng-wig#^3.0.19"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/fonts/bootstrap/*",
+        "assets/javascripts/bootstrap.js"
+      ]
+    },
+    "alertify-js": {
+      "main": [
+        "./build/css/alertify.min.css",
+        "./build/css/themes/default.min.css",
+        "./build/alertify.min.js"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "^1.6.6"
+  }
+}

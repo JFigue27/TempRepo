@@ -1,0 +1,393 @@
+<!doctype html>
+<html ng-app="Training" ng-controller="MainController">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Training</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="fonts/iconfont/material-icons.css">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/ngActivityIndicator/css/ngActivityIndicator.css" />
+    <link rel="stylesheet" href="/bower_components/selectize/dist/css/selectize.css" />
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/bower_components/pikaday/css/pikaday.css" />
+    <link rel="stylesheet" href="/bower_components/handsontable/dist/handsontable.css" />
+    <link rel="stylesheet" href="/bower_components/alertify-js/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="/bower_components/alertify-js/build/css/themes/default.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body>
+    <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- <ul class="nav navbar-nav navbar-right" ng-if="true">
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{theme.name}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="aTheme in bootstraps"><a href="" ng-click="setTheme($index)">{{aTheme.name}}</a></li>
+                            </ul>
+                        </li>
+                    </ul> -->
+    <section layout="column" id="mainSection" style="height: 100%;visibility: hidden;">
+        <md-sidenav md-component-id="main-sidenav" md-whiteframe="4" ng-if="currentUser">
+            <md-toolbar class="MainToolbar">
+                <div class="md-toolbar-tools">
+                    <h1 flex style="color: white;">Menu</h1>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleMainSideNav()">
+                        <md-icon>menu</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content layout-margin>
+                <md-list>
+                    <md-list-item ng-href="#!/home" ng-click="toggleMainSideNav()">
+                        <md-icon>home</md-icon>
+                        <p> Home </p>
+                    </md-list-item>
+                    <md-list-item ng-href="#!/matrix" ng-click="toggleMainSideNav()">
+                        <md-icon>recent_actors</md-icon>
+                        <p>Matrix</p>
+                    </md-list-item>
+                    <md-list-item ng-href="#!/DC-3" ng-click="toggleMainSideNav()">
+                        <md-icon>layers</md-icon>
+                        <p>DC-3</p>
+                    </md-list-item>
+                    <md-list-item ng-if="currentUser.Role == 'RH' || currentUser.id == '-1'">
+                        <md-icon md-menu-origin>library_books</md-icon>
+                        <p> Catalogs </p>
+                        <md-menu class="md-secondary" md-offset="0 40">
+                            <md-button class="md-icon-button">
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-href="#!/users" ng-click="toggleMainSideNav()"><i class="fa fa-user-circle" aria-hidden="true" style="font-size: 20px;"></i> Users
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </md-list-item>
+                    <md-list-item ng-href="#!/DC-3" ng-click="toggleMainSideNav()">
+                        <md-icon>insert_chart</md-icon>
+                        <p>Reports</p>
+                    </md-list-item>
+                    <md-list-item>
+                        <md-icon md-menu-origin>account_circle</md-icon>
+                        <p>{{currentUser.Value}}</p>
+                        <md-menu class="md-secondary" md-offset="0 40">
+                            <md-button class="md-icon-button">
+                            </md-button>
+                            <md-menu-content width="3">
+                                <!-- <md-menu-item>
+                                    <md-button ng-href="#!/profile" ng-click="toggleMainSideNav()">
+                                        Profile
+                                    </md-button>
+                                </md-menu-item> -->
+                                <md-menu-item>
+                                    <md-button ng-click="logOut()">
+                                        Logout
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-toolbar ng-if="currentUser" class="MainToolbar">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleMainSideNav()">
+                    <md-icon>menu</md-icon>
+                </md-button>
+                <h2 flex md-truncate style="color: white;">Training</h2>
+                <md-nav-bar md-selected-nav-item="home" nav-bar-aria-label="navigation links" hide-xs>
+                    <md-nav-item md-nav-href="#!/" name="home" aria-label="Home">
+                        <md-icon>home</md-icon>
+                        Home
+                    </md-nav-item>
+                    <md-nav-item md-nav-href="#!/reports/" name="reports" aria-label="Reports">
+                        <md-icon>insert_chart</md-icon>
+                        Reports
+                    </md-nav-item>
+                    <md-nav-item md-nav-href="#!/trainings" name="training" aria-label="Training" ng-if="currentUser.Role == 'RH' || currentUser.id == '-1' || currentUser.Role == 'Trainer'">
+                        <md-icon>fitness_center</md-icon>
+                        Trainig
+                    </md-nav-item>
+                    <md-nav-item md-nav-href="#!/dc-3/" name="dc=3" aria-label="DC-3">
+                        <md-icon>layers</md-icon>
+                        DC-3
+                    </md-nav-item>
+                    <md-nav-item md-nav-href="#!/matrix/" name="matrix" aria-label="Matrix">
+                        <md-icon>recent_actors</md-icon>
+                        Matrix
+                    </md-nav-item>
+                    <md-nav-item md-nav-href="#!/employees/" name="employees" aria-label="Employees" ng-if="currentUser.Role == 'RH' || currentUser.id == '-1'">
+                        <md-icon>assignment_ind</md-icon>
+                        Employees
+                    </md-nav-item>
+                </md-nav-bar>
+                <md-menu md-position-mode="target-right target" md-offset="80 40" hide-xs ng-if="currentUser.Role == 'RH' || currentUser.id == '-1'">
+                    <md-button aria-label="Open User Menu" ng-click="$mdMenu.open($event)">
+                        <md-icon md-menu-origin>library_books</md-icon>
+                        <span style="color: white;">Catalogs</span>
+                    </md-button>
+                    <md-menu-content width="3" style="max-height: 355px;">
+                        <md-menu-item>
+                            <md-button ng-href="#!/users">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Users &nbsp<i class="fa fa-user-circle" aria-hidden="true" style="font-size: 20px;"></i></p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/areas">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Areas</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/certifications">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Certifications</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/job-positions">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Job Positions</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/skills">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Skills</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/shifts">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Shifts</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/reports">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Reports</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <md-menu md-position-mode="target-right target" md-offset="300 40">
+                    <md-button aria-label="Open User Menu" ng-click="$mdMenu.open($event)">
+                        <md-icon md-menu-origin>account_circle</md-icon>
+                        <span style="color: white;">{{currentUser.Value}}</span>
+                    </md-button>
+                    <md-menu-content width="3">
+                        <md-menu-item>
+                            <md-button ng-click="logOut()">
+                                <div layout="row" flex>
+                                    <span flex></span>
+                                    <p>Logout</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+        <md-content flex layout-padding class="MainContent">
+            <div ng-view=""></div>
+        </md-content>
+    </section>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!-- <script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script> -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/bower_components/ngActivityIndicator/ngActivityIndicator.js"></script>
+    <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <script src="/bower_components/microplugin/src/microplugin.js"></script>
+    <script src="/bower_components/sifter/sifter.js"></script>
+    <script src="/bower_components/selectize/dist/js/selectize.js"></script>
+    <script src="/bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/numbro/numbro.js"></script>
+    <script src="/bower_components/pikaday/pikaday.js"></script>
+    <script src="/bower_components/handsontable/dist/handsontable.js"></script>
+    <script src="/bower_components/alertify-js/build/alertify.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <!-- endbuild -->
+    <script src="scripts/vendor/alertify-defaults.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/crud-factory.js"></script>
+    <script src="scripts/services/crud-services.js"></script>
+    <script src="scripts/services/form-controller.js"></script>
+    <script src="scripts/services/list-controller.js"></script>
+    <script src="scripts/services/app-config.js"></script>
+    <script src="scripts/services/auth-interceptor-service.js"></script>
+    <script src="scripts/services/auth-service.js"></script>
+    <script src="scripts/services/qserial-decorator.js"></script>
+    <script src="scripts/directives/ng-selectize.js"></script>
+    <script src="scripts/directives/attachments-box.js"></script>
+    <script src="scripts/directives/avatar.js"></script>
+    <script src="scripts/directives/modal.js"></script>
+    <script src="scripts/directives/hide-when-loading.js"></script>
+    <script src="components/User/user.form.controller.js "></script>
+    <script src="components/User/user.list.controller.js "></script>
+    <script src="components/User/user.form.component.js "></script>
+    <script src="components/User/user.list.component.js "></script>
+    <script src="components/Responsible/responsible.service.js"></script>
+    <script src="components/Responsible/responsible.component.js"></script>
+    <script src="components/Responsible/responsible.list.component.js"></script>
+    <!-- start:generated:components -->
+    <script src="components/Employee/employee.service.js"></script>
+    <script src="components/Employee/employee.form.controller.js"></script>
+    <script src="components/Employee/employee.list.controller.js"></script>
+    <script src="components/Employee/employee.form.component.js"></script>
+    <script src="components/Employee/employee.list.component.js"></script>
+    <script src="components/Workstation/workstation.service.js"></script>
+    <script src="components/Workstation/workstation.form.controller.js"></script>
+    <script src="components/Workstation/workstation.list.controller.js"></script>
+    <script src="components/Workstation/workstation.form.component.js"></script>
+    <script src="components/Workstation/workstation.list.component.js"></script>
+    <script src="components/Certification/certification.service.js"></script>
+    <script src="components/Certification/certification.form.controller.js"></script>
+    <script src="components/Certification/certification.list.controller.js"></script>
+    <script src="components/Certification/certification.form.component.js"></script>
+    <script src="components/Certification/certification.list.component.js"></script>
+    <script src="components/Shift/shift.service.js"></script>
+    <script src="components/Shift/shift.form.controller.js"></script>
+    <script src="components/Shift/shift.list.controller.js"></script>
+    <script src="components/Shift/shift.form.component.js"></script>
+    <script src="components/Shift/shift.list.component.js"></script>
+    <script src="components/TrainingProfile/training.profile.service.js"></script>
+    <script src="components/TrainingProfile/training.profile.form.controller.js"></script>
+    <script src="components/TrainingProfile/training.profile.list.controller.js"></script>
+    <script src="components/TrainingProfile/training.profile.form.component.js"></script>
+    <script src="components/TrainingProfile/training.profile.list.component.js"></script>
+    <script src="components/JobPosition/job.position.service.js"></script>
+    <script src="components/JobPosition/job.position.form.controller.js"></script>
+    <script src="components/JobPosition/job.position.list.controller.js"></script>
+    <script src="components/JobPosition/job.position.form.component.js"></script>
+    <script src="components/JobPosition/job.position.list.component.js"></script>
+    <script src="components/Skill/skill.service.js"></script>
+    <script src="components/Skill/skill.form.controller.js"></script>
+    <script src="components/Skill/skill.list.controller.js"></script>
+    <script src="components/Skill/skill.form.component.js"></script>
+    <script src="components/Skill/skill.list.component.js"></script>
+    <script src="components/Training/training.service.js"></script>
+    <script src="components/Training/training.form.controller.js"></script>
+    <script src="components/Training/training.list.controller.js"></script>
+    <script src="components/Training/training.form.component.js"></script>
+    <script src="components/Training/training.list.component.js"></script>
+    <script src="components/Matrix/matrix.service.js"></script>
+    <script src="components/Matrix/matrix.form.controller.js"></script>
+    <script src="components/Matrix/matrix.list.controller.js"></script>
+    <script src="components/Matrix/matrix.form.component.js"></script>
+    <script src="components/Matrix/matrix.list.component.js"></script>
+    <script src="components/TrainingScore/training.score.service.js"></script>
+    <script src="components/TrainingScore/training.score.form.controller.js"></script>
+    <script src="components/TrainingScore/training.score.list.controller.js"></script>
+    <script src="components/TrainingScore/training.score.form.component.js"></script>
+    <script src="components/TrainingScore/training.score.list.component.js"></script>
+    <script src="components/EmployeeCard/employee.card.service.js"></script>
+    <script src="components/EmployeeCard/employee.card.form.controller.js"></script>
+    <script src="components/EmployeeCard/employee.card.list.controller.js"></script>
+    <script src="components/EmployeeCard/employee.card.form.component.js"></script>
+    <script src="components/EmployeeCard/employee.card.list.component.js"></script>
+    <script src="components/Level/level.service.js"></script>
+    <script src="components/Level/level.form.controller.js"></script>
+    <script src="components/Level/level.list.controller.js"></script>
+    <script src="components/Level/level.form.component.js"></script>
+    <script src="components/Level/level.list.component.js"></script>
+    <script src="components/FormatDc3/format.dc.3.service.js"></script>
+    <script src="components/FormatDc3/format.dc.3.form.controller.js"></script>
+    <script src="components/FormatDc3/format.dc.3.list.controller.js"></script>
+    <script src="components/FormatDc3/format.dc.3.form.component.js"></script>
+    <script src="components/FormatDc3/format.dc.3.list.component.js"></script>
+    <script src="components/Dc3/dc.3.service.js"></script>
+    <script src="components/Dc3/dc.3.form.controller.js"></script>
+    <script src="components/Dc3/dc.3.list.controller.js"></script>
+    <script src="components/Dc3/dc.3.form.component.js"></script>
+    <script src="components/Dc3/dc.3.list.component.js"></script>
+    <script src="components/Dc3/dc.3.list.report.js"></script>
+    <!-- end:generated:components -->
+    <!-- start:generated:routes -->
+    <script src="routes/Main/main-route.js"></script>
+    <script src="routes/Login/login-route.js"></script>
+    <script src="routes/About/about-route.js"></script>
+    <script src="routes/Profile/profile-route.js"></script>
+    <script src="routes/Reports/reports-route.js"></script>
+    <script src="routes/Users/users-route.js"></script>
+    <script src="routes/Employees/employees-route.js"></script>
+    <script src="routes/Areas/areas-route.js"></script>
+    <script src="routes/Workstations/workstations-route.js"></script>
+    <script src="routes/Certifications/certifications-route.js"></script>
+    <script src="routes/Shifts/shifts-route.js"></script>
+    <script src="routes/TrainingProfile/training-profile-route.js"></script>
+    <script src="routes/JobPositions/job-positions-route.js"></script>
+    <script src="routes/Skills/skills-route.js"></script>
+    <script src="routes/Matrix/matrix-route.js"></script>
+    <script src="routes/Trainings/trainings-route.js"></script>
+    <script src="routes/Dc3/dc-3-route.js"></script>
+    <!-- end:generated:routes -->
+</body>
+
+</html>

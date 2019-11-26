@@ -1,0 +1,23 @@
+<div layout="row">
+    <div flex></div>
+    <md-datepicker name="text" ng-change="on_input_change(baseEntity);" ng-model="baseEntity.HireDate" md-placeholder="Hire Date">
+    </md-datepicker>
+</div>
+<div layout="column">
+    <div layout="row">
+        <md-input-container flex>
+            <label>Name</label>
+            <input type="text" ng-model="baseEntity.Name">
+        </md-input-container>
+    </div>
+</div>
+<div flex-xs flex-get-xs="50" layout="column">
+    <md-card>
+        <md-card-title-text>
+            <md-card-title-text>
+                <span class="md-headline">Card Image</span>
+                <span class="md-subhead">Large</span>
+            </md-card-title-text>
+        </md-card-title-text>
+    </md-card>
+</div>

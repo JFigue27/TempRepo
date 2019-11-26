@@ -1,0 +1,39 @@
+<div class="container" layout-fill style="min-height: 1224px;">
+    <div class="text-right" style="min-height: 30px;">
+        <dir-pagination-controls pagination-id="Trainings" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+    </div>
+    <div style="" pagination-id="Trainings" dir-paginate="item in baseList | itemsPerPage: filterOptions.perPage track by item.TrainingKey" total-items="filterOptions.itemsCount" current-page="filterOptions.page">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <!-- <pre>{{baseList | json}}</pre> -->
+                    <div layout="column" layout-gt-xs="row">
+                        <div layout="column" flex>
+                            <h4><b>{{item.CatCertification.Value}}</b></h4>
+                            <span class="md-subhead"><b>Trainer: </b> {{item.Trainer}} ({{item.InternalExternal}})</span>
+                        </div>
+                        <div layout="column" class="text-right" style="padding-top: 2px;">
+                            <!-- <span><b>Start Date:</b> <span style="min-width: 110px;display: inline-block;">{{item.DateStart | date:'mediumDate'}}</span></span>
+                            <span><b>End Date:</b> <span style="min-width: 110px;display: inline-block;">{{item.ConvertedDateEnd | date:'mediumDate'}}</span></span> -->
+                            <span><b>Certification Date:</b> <span style="min-width: 110px;display: inline-block;">{{item.DateCertification | date:'mediumDate'}}</span></span>
+                            <span><b>Expires At:</b> <span style="min-width: 110px;display: inline-block;">{{item.DateExpiresAt | date:'mediumDate'}}</span></span>
+                        </div>
+                    </div>
+                </md-card-title-text>
+            </md-card-title>
+            <!-- <md-card-content>
+                <h4 style="margin-top: 2px;" class="md-headline">Notes</h4>
+                <pre style="min-height: 50px;">{{item.Notes}}</pre>
+            </md-card-content> -->
+            <div class="md-actions" layout="row" layout-align="start end">
+                <md-button class="md-raised" ng-click="openItem(item, $event);">Open</md-button>
+                <md-button class="md-raised" ng-click="removeItem(item)">Remove</md-button>
+            </div>
+        </md-card>
+    </div>
+</div>
+<modal title="Training" modal-id="modal-Training" ok-label="Save">
+    <modal-body>
+        <training-form></training-form>
+    </modal-body>
+</modal>

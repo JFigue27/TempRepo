@@ -1,0 +1,55 @@
+<form novalidate ng-submit="addEmployee(employeeToAdd)" layout="row" layout-align="center center">
+   <!--  <pre> {{baseEntity | json}} </pre> -->
+    <md-autocomplete flex md-selected-item="employeeToAdd" md-search-text="searchEmployee" md-items="item in queryEmployees(searchEmployee)" md-item-text="item.EmployeeNameAndNumber" md-min-length="4" placeholder="Employee Number" md-selected-item-change="baseEntity.EmployeeNameAndNumber = baseEntity.Employee.EmployeeNameAndNumber" md-require-match="true" md-no-cache="false" md-autoselect="true" md-clear-button="true" md-delay="500">
+        <md-item-template>
+            <span md-highlight-text="searchEmployee" md-highlight-flags="^i">{{item.EmployeeNameAndNumber}}</span>
+        </md-item-template>
+        <md-not-found>
+            Not Found <a ng-click="newEmployee(searchEmployee)">New Employee</a>
+        </md-not-found>
+    </md-autocomplete>
+    <md-button class="md-raised md-accent md-hue-1" type="submit">Add</md-button>
+</form>
+<div class="table-responsive">
+    <table class="TableEditable table table-condensed">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Employee</th>
+                <!-- <th>Supervisor</th> -->
+                <th>Score</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="score in baseList track by $index">
+                <td style="width: 90px;text-align: center;">
+                    <button class="btn btn-xs btn-link" ng-if="score.EF_State != 3" ng-click="removeEmployee(baseList, $index);on_input_change(score);" style="font-size: 10px;"> <md-icon>delete_forever</md-icon> Remove</button>
+                    <button class="btn btn-xs btn-link" ng-if="score.EF_State == 3" ng-click="undoRemoveEmployee(score);on_input_change(score);" style="font-size: 10px;color:red;">Undo Remove</button>
+                </td>
+                <td>
+                    <md-input-container>
+                        <input ng-model="score.Employee.EmployeeNameAndNumber" disabled="true">
+                    </md-input-container>
+                </td>
+                <!-- <td>
+                    <md-input-container>
+                        <md-select ng-model="score.SupervisorKey" ng-change="on_input_change(score);">
+                            <md-option ng-value="opt.id" ng-repeat="opt in theSupervisors">{{ opt.Name }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </td> -->
+                <td style="width: 100px;">
+                    <md-input-container>
+                        <input ng-model="score.Score" ng-change="on_input_change(score);" style="text-align: center;" >
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container>
+                        <input ng-model="score.Notes" ng-change="on_input_change(score);">
+                    </md-input-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

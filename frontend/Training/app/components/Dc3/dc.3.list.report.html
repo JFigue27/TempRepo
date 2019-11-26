@@ -1,0 +1,7 @@
+<md-button ng-click="print();"> <md-icon>print</md-icon>Print </md-button>
+<div class="printableZone">
+    <div ng-repeat="id in ids track by $index">
+        <format-dc3-form identifier="id"></format-dc3-form>
+        <div ng-if="$index < ids.length - 1" class="breakPage" style="height:30px"></div>
+    </div>
+</div>
